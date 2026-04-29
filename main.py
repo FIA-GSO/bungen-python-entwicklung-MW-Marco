@@ -9,8 +9,23 @@ def compute_r2d2_population(steps: int) -> tuple[int,int,int]:
     :param steps: amount of steps to compute the population (e.g.: 5)
     :return: tuple of childs adults and old r2d2
     """
-    return (0,0,0)
+    junge = 0
+    erwachsene = 0
+    alte = 0
 
+    for _ in range(steps):
+        # Reproduktion
+        neue_junge = erwachsene * 4 + alte * 2
+
+        # Alterung
+        neue_erwachsene = junge // 2
+        neue_alte = erwachsene // 3
+
+        junge = neue_junge
+        erwachsene = neue_erwachsene
+        alte = neue_alte
+
+    return junge, erwachsene, alte
 
 
 #---------------------Aufgabe 2 Quantitativer Angebotsvergleich------------------------------
